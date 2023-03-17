@@ -6,7 +6,10 @@ import QuestionCard from './Components/QuestionCard';
 //types
 import { QuestionState,Difficulty } from './API';
 
-type AnswerObject ={
+//styles
+import './index.css'
+
+export type AnswerObject ={
   question:string;
   answer:string;
   correct:boolean;
@@ -47,21 +50,46 @@ console.log(questions)
 
 ////////
   const checkAnswer = (e:React.MouseEvent<HTMLButtonElement>) => {
+    if(!gameOver){
+      const answer=e.currentTarget.value;
+      //correct answer checking
+      const  correct = questions[number].correct_answer === answer;
+    //score add
+    if(correct) setScore(prev=>prev+1);
+    //save ans for user ans
+    const answerObject={
+      question: questions[number].question,
+      answer,
+      correct,
+      correctAnswer:questions[number].correct_answer,
 
-  }
+    }
+    setUserAnswers((prev)=>[...prev,answerObject]);
+    }
+
+  };
 
   const nextQuestion = async ()=>{
+    //nextques
+    const nextQuestion=number+1;
+    if(nextQuestion===TOTAL_OUESTIONS){
+      setGameOver(true);
+    }
+    else{
+      setNumber(nextQuestion);
+    }
 
   }
   return (
-    <div className="App">
-      <h1>TYPESCRIPT OUIZ</h1>
+    <>
+    <div className=" ">
+      <h1 className=''>TYPESCRIPT OUIZ</h1>
       {gameOver || userAnswers.length === TOTAL_OUESTIONS ?(
       <button className='start' onClick={startTrivia}>
         Start
         </button>
       ):null}
-    {!gameOver?<p className='score'>Score:</p> : null}
+    {!gameOver?<p className='score'>Score:{score}</p> : null}
     {loading && <p>Loading Questions...</p>}
     {!loading && !gameOver &&(
     <QuestionCard
@@ -82,6 +110,7 @@ console.log(questions)
     </button>
     ):null}
     </div>
+    </>
   );
 }
 
