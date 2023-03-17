@@ -4,7 +4,7 @@ import { shuffleArray } from "./util";
 
 export type Question ={
     category :string;
-    correct_answers:string;
+    correct_answer:string;
     difficulty:string;
     incorrect_answers:string[];
     question:string;
@@ -28,9 +28,9 @@ export const fetchOuizQuestions= async (amount:number,difficulty:Difficulty)=>{
     return data.results.map((question:Question)=>(
         {
             ...question,
-            answer:shuffleArray([
+            answers:shuffleArray([
                 ...question.incorrect_answers,
-                question.correct_answers
+                question.correct_answer,
             ]),
         }
     ))
