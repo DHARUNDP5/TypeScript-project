@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState} from 'react'
 import { fetchOuizQuestions } from './API';
+import back from './Images/bg.jpg'
 //components
 import QuestionCard from './Components/QuestionCard';
 //types
@@ -81,15 +82,27 @@ console.log(questions)
 
   }
   return (
-    <>
-    <div className=" ">
-      <h1 className=''>TYPESCRIPT OUIZ</h1>
+    <div className=''>
+     {/* <img className="bg-cover w-[100%]" src={back}></img> */}
+    <div className="">
+       <h1 className='text-lime-600 flex justify-center mt-[8%] text-[60px] font-semibold'>TYPESCRIPT OUIZ</h1>
+       </div>
+
+<div className='flex justify-center mt-[10%] text-[40px]'>
+
       {gameOver || userAnswers.length === TOTAL_OUESTIONS ?(
-      <button className='start' onClick={startTrivia}>
+      <button className='bg-[#6496EB] text-white text-[30px] w-40 h-14 rounded-full flex items-center text-center justify-center' onClick={startTrivia}>
         Start
         </button>
       ):null}
-    {!gameOver?<p className='score'>Score:{score}</p> : null}
+      </div>
+
+      <div className='flex justify-center text-[40px]'>
+    {!gameOver?<p className='mt-[-8%] text-pink-500'>Score:{score}</p> : null}
+    </div>
+
+
+    <div className='flex justify-center text-[40px] shadow-lg w-[1100px] items-center shadow-sky-700 ml-[600px] pl-[10px]'>
     {loading && <p>Loading Questions...</p>}
     {!loading && !gameOver &&(
     <QuestionCard
@@ -105,12 +118,13 @@ console.log(questions)
     {!gameOver && 
     !loading && userAnswers.length === number+1 &&
     number !== TOTAL_OUESTIONS -1 ? (
-    <button className='next' onClick={nextQuestion}>
+    <button className='bg-[#6496EB] text-white text-[30px] w-[200px] h-14 rounded-full mt-[42%] mr-[10px]' onClick={nextQuestion}>
       Next
     </button>
     ):null}
     </div>
-    </>
+    </div>
+    
   );
 }
 
