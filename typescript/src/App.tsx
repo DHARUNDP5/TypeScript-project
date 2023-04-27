@@ -103,6 +103,9 @@ console.log(questions)
 
 
     <div className='flex justify-center text-[40px] shadow-lg w-[1100px] items-center shadow-sky-700 ml-[600px] pl-[10px]'>
+      <div className="flex items-center mb-4">
+    <input type="radio" value="" name="disabled-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+   
     {loading && <p>Loading Questions...</p>}
     {!loading && !gameOver &&(
     <QuestionCard
@@ -118,12 +121,13 @@ console.log(questions)
     {!gameOver && 
     !loading && userAnswers.length === number+1 &&
     number !== TOTAL_OUESTIONS -1 ? (
-    <button className='bg-[#6496EB] text-white text-[30px] w-[200px] h-14 rounded-full mt-[42%] mr-[10px]' onClick={nextQuestion}>
+    <button className='bg-[#6496EB] text-white text-[30px] w-[100px] h-14 rounded-full mt-[42%] mr-[10px]' onClick={nextQuestion}>
       Next
     </button>
     ):null}
     </div>
     </div>
+     </div>
     
   );
 }
