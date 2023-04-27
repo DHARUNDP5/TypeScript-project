@@ -85,7 +85,7 @@ console.log(questions)
     <div className=''>
      {/* <img className="bg-cover w-[100%]" src={back}></img> */}
     <div className="">
-       <h1 className='text-lime-600 flex justify-center mt-[8%] text-[60px] font-semibold'>TYPESCRIPT OUIZ</h1>
+       <h1 className='text-lime-600 flex justify-center mt-[8%] text-[60px] font-semibold'>TYPESCRIPT QUIZ</h1>
        </div>
 
 <div className='flex justify-center mt-[10%] text-[40px]'>
